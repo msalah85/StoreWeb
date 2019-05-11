@@ -1,0 +1,59 @@
+﻿@model Hasseeb.Application.Domain.Account
+
+<h2>Save</h2>
+@using (Html.BeginForm("Save","Accounts", FormMethod.Post, new { id= "popupForm" }))
+{
+    if (Model != null && Model.ID > 0)
+    {
+@Html.HiddenFor(a=>a.ID)
+    }
+
+<div class="form-group">
+    <label>AccountNatureID</label>
+    @Html.TextBoxFor(a=>a.AccountNature,new { @class = "form-control" })
+    @Html.ValidationMessageFor(a=>a.AccountNature)
+</div>
+<div class="form-group">
+    <label>ParentAccountID</label>
+    @Html.TextBoxFor(a => a.ParentAccount, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.ParentAccount)
+</div>
+<div class="form-group">
+    <label>AccountSerial</label>
+    @Html.TextBoxFor(a => a.AccountSerial, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.AccountSerial)
+</div>
+<div class="form-group">
+    <label>AccountName</label>
+    @Html.TextBoxFor(a => a.AccountName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.AccountName)
+</div>
+<div class="form-group">
+    <label>AccountDesc</label>
+    @Html.TextBoxFor(a => a.AccountDesc, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.AccountDesc)
+</div><div class="form-group">
+      <label>GroupOrder</label>
+    @Html.TextBoxFor(a => a.GroupOrder, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.GroupOrder)
+</div>
+<div class="form-group">
+    <label>Active</label>
+    @Html.TextBoxFor(a => a.Active, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.Active)
+</div>
+<div class="form-group">
+    <label>AddDate</label>
+    @Html.TextBoxFor(a => a.AddDate, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.AddDate)
+</div>
+<div class="form-group">
+    <label>IsMain</label>
+ @Html.TextBoxFor(a => a.IsMain, new { @class = "form-control" })
+ @Html.ValidationMessageFor(a => a.IsMain)
+</div>
+
+<div>
+    <input type="submit" value="Save" />
+</div>
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JqueryDataTables.ServerSide.AspNetCoreWeb" Version="1.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hasseeb.Application\Hasseeb.Application.csproj" />
+    <ProjectReference Include="..\Hasseeb.Repository\Hasseeb.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

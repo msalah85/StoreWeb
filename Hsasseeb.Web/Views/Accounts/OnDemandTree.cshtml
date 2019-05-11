@@ -1,0 +1,41 @@
+﻿@model List<Hasseeb.Application.Domain.Account>
+
+@{
+    ViewData["Title"] = "OnDemandTree";
+}
+
+
+<link href="~/css/treeStyle.css" rel="stylesheet" />
+
+<div style="border:1px solid black; padding:0px;  background-color:#FAFAFA">
+    @{
+        <div class="treeview">
+            @{
+                if (Model != null && Model.Count() > 0)
+                {
+                    <ul>
+                        @foreach (var i in Model)
+                        {
+                        <li>
+                            <span class="collapseTree collapsible" data-loaded="false" pid="@i.ID">&nbsp;</span>
+                            <span>
+                                @i.AccountName
+                            </span>
+                            <a asp-action="Edit" asp-route-id="@i.ID">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@i.ID">Delete</a>
+
+                        </li>
+                        }
+                    </ul>
+                }
+            }
+        </div>
+    }
+</div>
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/js/Tree.js" asp-append-version="true"></script>
+    </environment>
+    <script src="~/lib/jquery/dist/jquery-ui-1.8.20.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": "975e198ebf361d5f93956933cae549c0b6220a38"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "Hasseeb.Application/1.0.0": {
+        "dependencies": {
+          "JqueryDataTables.ServerSide.AspNetCoreWeb": "1.2.1"
+        },
+        "runtime": {
+          "Hasseeb.Application.dll": {}
+        }
+      },
+      "JqueryDataTables.ServerSide.AspNetCoreWeb/1.2.1": {
+        "runtime": {
+          "lib/netstandard2.0/AspNetCoreWeb.dll": {
+            "assemblyVersion": "1.2.1.0",
+            "fileVersion": "1.2.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hasseeb.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JqueryDataTables.ServerSide.AspNetCoreWeb/1.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-x1bQZZyor9fxP0iL90MJecE/bkP6dO6pyprqqj3IlLUroTOA9CxlTCx6QQZkgNdY1zUyDlMjpPBO/qOnKVj/0w==",
+      "path": "jquerydatatables.serverside.aspnetcoreweb/1.2.1",
+      "hashPath": "jquerydatatables.serverside.aspnetcoreweb.1.2.1.nupkg.sha512"
+    }
+  }
+}

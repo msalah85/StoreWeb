@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\bin\Debug\netcoreapp2.2\Hasseeb.Service.deps.json
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\bin\Debug\netcoreapp2.2\Hasseeb.Service.dll
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\bin\Debug\netcoreapp2.2\Hasseeb.Service.pdb
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\bin\Debug\netcoreapp2.2\Hasseeb.Application.dll
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\bin\Debug\netcoreapp2.2\Hasseeb.Repository.dll
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\bin\Debug\netcoreapp2.2\Hasseeb.Application.pdb
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\bin\Debug\netcoreapp2.2\Hasseeb.Repository.pdb
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\obj\Debug\netcoreapp2.2\Hasseeb.Service.csprojAssemblyReference.cache
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\obj\Debug\netcoreapp2.2\Hasseeb.Service.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\obj\Debug\netcoreapp2.2\Hasseeb.Service.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\obj\Debug\netcoreapp2.2\Hasseeb.Service.AssemblyInfo.cs
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\obj\Debug\netcoreapp2.2\Hasseeb.Service.csproj.CopyComplete
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\obj\Debug\netcoreapp2.2\Hasseeb.Service.dll
+C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Service\obj\Debug\netcoreapp2.2\Hasseeb.Service.pdb

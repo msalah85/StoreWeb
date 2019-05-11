@@ -1,0 +1,26 @@
+﻿@model Hasseeb.Application.Domain.Account
+
+<h2>Delete Employee</h2>
+@using (Html.BeginForm("SPADelete", "Accounts", FormMethod.Post, new { id = "popupForm" }))
+{
+    <div class="form-group">
+        <label>AccountName</label>
+        <p>@Model.AccountName</p>
+    </div>
+
+    <div class="form-group">
+        <label>AccountDesc</label>
+        <p>@Model.AccountDesc</p>
+    </div>
+
+    <div class="form-group">
+        <label>AccountSerial</label>
+        <p>@Model.AccountSerial</p>
+    </div>
+
+   
+
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}
