@@ -6,3 +6,11 @@ C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Application\obj\Debug\n
 C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.AssemblyInfo.cs
 C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.dll
 C:\Users\User\Desktop\HasseebFullSolution-master\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.pdb
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\bin\Debug\netcoreapp2.2\Hasseeb.Application.deps.json
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\bin\Debug\netcoreapp2.2\Hasseeb.Application.dll
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\bin\Debug\netcoreapp2.2\Hasseeb.Application.pdb
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.csproj.CoreCompileInputs.cache
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.AssemblyInfoInputs.cache
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.AssemblyInfo.cs
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.dll
+C:\Users\Sheta\source\repos\StoreWeb\Hasseeb.Application\obj\Debug\netcoreapp2.2\Hasseeb.Application.pdb

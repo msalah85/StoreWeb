@@ -45,6 +45,7 @@ namespace Hasseeb.Repository
             {
                 int start = table != null ? table.Start : 0,
                     length = table != null ? table.Length : 25;
+                var search = table.Columns;
 
 
 

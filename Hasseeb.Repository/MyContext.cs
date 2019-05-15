@@ -10,7 +10,7 @@ namespace Hasseeb.Repository
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"data source=.\SQLEXPRESS;initial catalog=HasseebDb;persist security info=True;user id=sa;password=123456;MultipleActiveResultSets=True;");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=ManyHsasseeb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
         public MyContext(DbContextOptions<MyContext> options)
         : base(options)

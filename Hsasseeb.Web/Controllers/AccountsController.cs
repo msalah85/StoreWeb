@@ -13,6 +13,9 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Http;
 using JqueryDataTables.ServerSide.AspNetCoreWeb;
+using Hasseeb.Repository;
+
+
 
 namespace Hsasseeb.Web.Controllers
 {
@@ -21,12 +24,14 @@ namespace Hsasseeb.Web.Controllers
 
         private readonly IAccountManager _accountAppService;
         private readonly IAccountNatureManager _accNatureAppService;
+        private readonly MyContext _ctx;
 
 
-        public AccountsController(IAccountManager accountAppService, IAccountNatureManager accNatureAppService)
+        public AccountsController(IAccountManager accountAppService, IAccountNatureManager accNatureAppService, MyContext ctx)
         {
             _accountAppService = accountAppService;
             _accNatureAppService = accNatureAppService;
+            _ctx = ctx;
         }
 
         #region SPA Accounts 
@@ -39,6 +44,11 @@ namespace Hsasseeb.Web.Controllers
         public async Task<IActionResult> GetAccounts(DTParameters param) // [FromBody]
         {
             var data = await _accountAppService.GetAllTable(param);
+            if (param.Search.Value != null)
+            {
+                data = data.Where(x => x.AccountName == param.Search.Value);
+            }
+          
 
             int draw = param != null ? param.Draw : 1;
 
@@ -51,14 +61,9 @@ namespace Hsasseeb.Web.Controllers
             });
 
 
-            return results;
-            //}
-            //catch(Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //    return new JsonResult(new { error = "Thres error" });
-            //}
 
+            return results;
+          
 
             /*
              check this link for more information
@@ -67,6 +72,59 @@ namespace Hsasseeb.Web.Controllers
 
             // // You have to return data frmatted for datatable controls
             // search for any sample: datatables.net with MVC 
+        }
+
+
+        public IActionResult LoadData()
+        {
+            try
+            {
+                var draw = HttpContext.Request.Form["draw"].FirstOrDefault();
+                // Skiping number of Rows count  
+                var start = Request.Form["start"].FirstOrDefault();
+                // Paging Length 10,20  
+                var length = Request.Form["length"].FirstOrDefault();
+                // Sort Column Name  
+                var sortColumn = Request.Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
+                // Sort Column Direction ( asc ,desc)  
+                var sortColumnDirection = Request.Form["order[0][dir]"].FirstOrDefault();
+                // Search Value from (Search box)  
+                var searchValue = Request.Form["search[value]"].FirstOrDefault();
+
+                //Paging Size (10,20,50,100)  
+                int pageSize = length != null ? Convert.ToInt32(length) : 0;
+                int skip = start != null ? Convert.ToInt32(start) : 0;
+                int recordsTotal = 0;
+
+                // Getting all Customer data  
+                var customerData = (from Account in _ctx.Accounts
+                                    select Account);
+
+
+                ////Sorting  
+                if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
+                {
+                    customerData = customerData.OrderBy(x=>x.AccountName);
+                }
+                //Search  
+                if (!string.IsNullOrEmpty(searchValue))
+                {
+                    customerData = customerData.Where(m => m.AccountName == searchValue);
+                }
+
+                //total number of rows count   
+                recordsTotal = customerData.Count();
+                //Paging   
+                var data = customerData.Skip(skip).Take(pageSize).ToList();
+                //Returning Json Data  
+                return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data });
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         [HttpGet]

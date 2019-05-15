@@ -1,102 +1,101 @@
 ﻿@model List<Hasseeb.Application.Domain.AccountNature>
 
-@{
+    @{
     ViewData["Title"] = "Index";
-}
+    }
+
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+
+    <link href="~/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/DataTables-1.10.18/css/datatables.css" rel="stylesheet" />
+    <link href="~/css/treeStyle.css" rel="stylesheet" />
+    <link href="~/css/modal.css" rel="stylesheet" />
+
+    <div class="container" style="margin-top:3%">
+        <a href="#" class="btn btn-info AddNew">Add New </a> <br /><br />
+        <a href="#" class="btn btn-info tree">Accounts Tree </a> <br /><br />
+        <a href="#" class="btn btn-info AddNewNature">Add New AccountNature </a> <br /><br />
+
+        <div style="width:90%; margin:0 auto" class="tablecontainer">
+            <table id="myDatatable">
+                <thead>
+                    <tr>
+                        <th id="ID">#</th>
+                        <th>Account Name</th>
+                        <th>Account Desc</th>
+                        <th>Group Order</th>
+                        <th>Account Serial</th>
+
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
 
 
-<link href="~/css/treeStyle.css" rel="stylesheet" />
-<link href="~/css/modal.css" rel="stylesheet" />
 
-<div class="container" style="margin-top:3%">
-    <a href="#" class="btn btn-info AddNew">Add New </a> <br /><br />
-    <a href="#" class="btn btn-info tree">Accounts Tree </a> <br /><br />
-    <a href="#" class="btn btn-info AddNewNature">Add New AccountNature </a> <br /><br />
+        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">
+                            &times;
+                        </a>
+                        <h4 id="ModalTitle"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" class="needs-validation " novalidate>
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label for="">Account Nature</label>
+                                    <select id="AccountNatureID" class="form-control"></select>
+                                </div>
 
-    <table class="table table-striped">
-        <thead>
-
-            <tr>
-                <th>Account Name</th>
-                <th>Account Desc</th>
-                <th>Edit</th>
-                <th>Delete</th>
-
-
-            </tr>
-        </thead>
-        <tbody id="tblData">
-            <tr id="LoadingStatus" style="color:red"></tr>
-        </tbody>
-    </table>
-    <div id="paged">
-
-
-    </div>
-
-
-
-    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">
-                        &times;
-                    </a>
-                    <h4 id="ModalTitle"></h4>
-                </div>
-                <div class="modal-body">
-                    <form id="form" class="needs-validation " novalidate>
-                        <div class="form-group">
-                            <div class="form-group ">
-                                <label for="">Account Nature</label>
-                                <select id="AccountNatureID" class="form-control"></select>
                             </div>
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label for="">Account Parent</label>
+                                    <select id="ParentAccountID" class="form-control"></select>
+                                </div>
 
-                        </div>
-                        <div class="form-group">
-                            <div class="form-group ">
-                                <label for="">Account Parent</label>
-                                <select id="ParentAccountID" class="form-control"></select>
                             </div>
+                            <div class="form-group">
 
-                        </div>
-                        <div class="form-group">
+                                <div class="form-group">
+                                    <label for="">Account Name</label>
+                                    <input type="email" required class="form-control" id="AccountName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="form-group ">
+                                    <label for="">Account Serial</label>
+                                    <input type="email" required class="form-control" id="AccountSerial">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="form-group ">
+                                    <label for="">Account Description</label>
+                                    <textarea type="email" class="form-control" id="AccountDesc"></textarea>
+
+                                </div>
+                            </div>
 
                             <div class="form-group">
-                                <label for="">Account Name</label>
-                                <input type="email" required class="form-control" id="AccountName">
+
+                                <div class="form-group col-md-4">
+                                    <label for="">GroupOrder</label>
+                                    <input type="email" class="form-control" id="GroupOrder">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label class="checkbox-inline">Active <input type="checkbox" id="Active"></label>
 
-                            <div class="form-group ">
-                                <label for="">Account Serial</label>
-                                <input type="email" required class="form-control" id="AccountSerial">
-                            </div>
-                        </div>
-                        <div class="form-group">
-
-                            <div class="form-group ">
-                                <label for="">Account Description</label>
-                                <textarea type="email" class="form-control" id="AccountDesc"></textarea>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-
-                            <div class="form-group col-md-4">
-                                <label for="">GroupOrder</label>
-                                <input type="email" class="form-control" id="GroupOrder">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <label class="checkbox-inline">Active <input type="checkbox" id="Active"></label>
-
-                                <label class="checkbox-inline" for="exampleCheck1">         Check for Active</label>
-                            </div>
+                                    <label class="checkbox-inline" for="exampleCheck1">         Check for Active</label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
@@ -110,118 +109,123 @@
                                 <a href="#" class="btn btn-block btn-danger" id="SaveAccount">Save</a>
                             </div>
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                  
-                </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
                 </div>
 
 
 
             </div>
 
-    </div>
+        </div>
 
-    <div class="modal fade" id="AccountNature">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h4 id="ModalTitle"></h4>
-                </div>
-                <div class="modal-body">
-                    <form id="form" class="needs-validation " novalidate>
+        <div class="modal fade" id="AccountNature">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h4 id="ModalTitle"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" class="needs-validation " novalidate>
 
-                        <div class="form-row">
+                            <div class="form-row">
 
-                            <div class="form-group col-md-4">
-                                <label for="">Account Nature Name</label>
-                                <input type="email" required class="form-control" id="AccountNatureName">
+                                <div class="form-group col-md-4">
+                                    <label for="">Account Nature Name</label>
+                                    <input type="email" required class="form-control" id="AccountNatureName">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <a href="#" class="btn btn-block btn-danger" id="SaveAccountNature">Save</a>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <a href="#" class="btn btn-block btn-danger" id="SaveAccountNature">Save</a>
+                            </div>
+                        </form>
+                    </div>
+
+
+
                 </div>
 
 
 
             </div>
 
-
-
         </div>
 
-    </div>
-
-    <div class="modal fade" id="DeleteConfirmation">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h4>Delete Record</h4>
-                </div>
-                <div class="modal-body">
-                    <h4>Are You Sure? You Want To Delete This Record.</h4>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-primary" data-dismiss="modal" id="r">Cancle</a>
-                    <a href="#" class="btn btn-danger" onclick="ConfirmDelete()">Confirm</a>
+        <div class="modal fade" id="DeleteConfirmation">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h4>Delete Record</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Are You Sure? You Want To Delete This Record.</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-primary" data-dismiss="modal" id="r">Cancle</a>
+                        <a href="#" class="btn btn-danger" onclick="ConfirmDeleteAccount()">Confirm</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="modal fade" id="TreeModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h4>Accounts Tree</h4>
-                </div>
-                <div style="border:1px solid black; padding:0px;  background-color:#FAFAFA">
-                    @{
-                        <div class="treeview">
-                            @{
+        <div class="modal fade" id="TreeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h4>Accounts Tree</h4>
+                    </div>
+                    <div style="border:1px solid black; padding:0px;  background-color:#FAFAFA">
+                        @{
+                            <div class="treeview">
+                                @{
                                 if (Model != null && Model.Count() > 0)
                                 {
                                     <ul>
                                         @foreach (var i in Model)
                                         {
-                                            <li>
-                                                <span class="collapseTree collapsible" data-loaded="false" pid="@i.ID">&nbsp;</span>
-                                                <span>
-                                                    @i.AccountNatureName
-                                                </span>
-                                                <a href='#' class='btn btn-warning' onclick='EditAccountNature(@i.ID)'><span class='glyphicon glyphicon-trash'></span> Edit</a>
-                                                ||<a href='#' class='btn btn-danger' onclick='DeleteAccountNature(@i.ID)'><span class='glyphicon glyphicon-trash'></span> Delete</a>
+                                        <li>
+                                            <span class="collapseTree collapsible" data-loaded="false" pid="@i.ID">&nbsp;</span>
+                                            <span>
+                                                @i.AccountNatureName
+                                            </span>
+                                            <a href='#' class='btn btn-warning' onclick='EditAccountNature(@i.ID)'><span class='glyphicon glyphicon-trash'></span> Edit</a>
+                                            ||<a href='#' class='btn btn-danger' onclick='DeleteAccountNature(@i.ID)'><span class='glyphicon glyphicon-trash'></span> Delete</a>
 
 
 
-                                            </li>
+                                        </li>
                                         }
                                     </ul>
                                 }
-                            }
-                        </div>
-                    }
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 
-
-</div>
-
-@section scripts
+    @section scripts
     {
-    <environment names="Development">
-        <script src="~/js/spaAccount.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Development">
-        <script src="~/js/Tree.js" asp-append-version="true"></script>
-    </environment>
-    <script src="~/lib/jquery/dist/jquery-ui-1.8.20.js" asp-append-version="true"></script>
-}
+        <environment names="Development">
+            <script src="~/DataTables-1.10.18/js/datatables.js" asp-append-version="true"></script>
+        </environment>
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery-ui-1.8.20.js" asp-append-version="true"></script>
+        </environment>
+        <environment names="Development">
+            <script src="~/js/spaAccount.js" asp-append-version="true"></script>
+        </environment>
+        <environment names="Development">
+            <script src="~/js/Tree.js" asp-append-version="true"></script>
+        </environment>
+    }

@@ -41,6 +41,7 @@
     <None Include="wwwroot\Images\ui-icons_454545_256x240.png" />
     <None Include="wwwroot\lib\jstree\dist\jstree.js" />
     <None Include="wwwroot\lib\jstree\dist\jstree.min.js" />
+    <None Include="wwwroot\lib\momentjs\moment.min.js" />
   </ItemGroup>
 
 

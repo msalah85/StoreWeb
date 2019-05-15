@@ -7,6 +7,7 @@ using Hasseeb.Application.Service;
 using Hasseeb.Application.ViewModels;
 using Hasseeb.Repository;
 using Hasseeb.Service;
+using JqueryDataTables.ServerSide.AspNetCoreWeb;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ReflectionIT.Mvc.Paging;
@@ -27,6 +28,40 @@ namespace Hsasseeb.Web.Controllers
         _accNatureAppService = accNatureAppService;
             _ctx = ctx;
     }
+
+        
+        public async Task<IActionResult> GetAccounts(DTParameters param) // [FromBody]
+        {
+            var data = await _accountAppService.GetAllTable(param);
+            if (param.Search.Value != null)
+            {
+                data = data.Where(x => x.AccountName == param.Search.Value);
+            }
+            
+            
+
+
+            int draw = param != null ? param.Draw : 1;
+
+            var results = new JsonResult(new DTResult<Account>
+            {
+                draw = draw,
+                data = data,
+                recordsFiltered = data.Count(),
+                recordsTotal = data.Count()
+            });
+
+
+
+            return results;
+
+            /*
+             check this link for more information
+            https://www.c-sharpcorner.com/article/jquery-datatables-with-asp-net-core-server-side-dynamic-multiple-column-searchin/
+            **/
+
+        }
+
     public IActionResult Index()
         {
             var geatAll = _accNatureAppService.GetAll();
@@ -71,14 +106,14 @@ namespace Hsasseeb.Web.Controllers
 
         #region SPA Accounts 
 
-        public IActionResult GetAccounts(int pageNumber = 1, int pageSize = 20)
-        {
-            var list = _accountAppService.GetAll();
+        //public IActionResult GetAccounts(int pageNumber = 1, int pageSize = 20)
+        //{
+        //    var list = _accountAppService.GetAll();
 
-            var pagedData = Pagination.PagedResult(list, pageNumber, pageSize);
-            return Json(pagedData);
+        //    var pagedData = Pagination.PagedResult(list, pageNumber, pageSize);
+        //    return Json(pagedData);
 
-        }
+        //}
 
         public JsonResult AllAccounts()
         {
